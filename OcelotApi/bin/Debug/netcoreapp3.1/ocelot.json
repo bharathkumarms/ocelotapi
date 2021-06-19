@@ -1,0 +1,40 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "6001"
+        }
+      ],
+      "UpstreamPathTemplate": "/product",
+      "Key": "Product"
+    },
+    {
+      "DownstreamPathTemplate": "/userprofile",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5000"
+        }
+      ],
+      "UpstreamPathTemplate": "/userprofile",
+      "Key": "UserProfile"
+    }
+  ],
+  "Aggregates": [
+    {
+      "ReRouteKeys": [
+        "UserProfile",
+        "Product"
+      ],
+      "UpstreamPathTemplate": "/UserProfileWithProduct"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:60073"
+  }
+}
